@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "Single"
+  },
+  {
+    "id": 2,
+    "name": "Double"
+  },
+  {
+    "id": 3,
+    "name": "Family"
+  },
+  {
+    "id": 4,
+    "name": "Deluxe"
+  }
+]

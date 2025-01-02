@@ -1,0 +1,307 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+* {
+  font-family: 'Lato', sans-serif;
+}
+@font-face {
+  font-family: 'Lato';
+  src: url('path/to/Lato-Regular.ttf') format('truetype');
+  font-weight: normal;
+}
+
+main {
+  font-family: "Lato", sans-serif;
+}
+/*Định dạng ô login */
+.sign {
+  display: flex;
+  min-height: 50px;
+  background-color: white;
+  justify-content: center;
+}
+.wrap {
+  width: 552px;
+  color: #181717;
+  border-radius: 10px;
+  padding-top: 50px;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-bottom: 24px;
+  min-width: 100%;
+  margin: 0 auto;
+}
+
+.sign #form-login {
+  max-width: 600px;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: both;
+}
+
+.login-phara {
+  display: flex;
+  transform: translateX(0%);
+  will-change: transform;
+  transition: all 0.35s ease 0s;
+  scroll-snap-align: start;
+}
+
+#form-login::-webkit-scrollbar {
+  display: none;
+}
+
+/*=====Các thành phần====*/
+.title {
+  font-family: 'Lato', sans-serif;
+  font-size: 36px;
+  text-align: center;
+  color: #181717;
+  font-weight: bold;
+  padding-bottom: 30px;
+  letter-spacing: 1px; /* Thêm khoảng cách giữa các chữ */
+}
+.Logo.footer-bottom {
+  display: flex;
+}
+/*ô nhập liệu*/
+.wrap .input-box {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin: 40px 0; /* Tăng margin để tạo khoảng cách */
+}
+
+.input-box input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  border: 2px solid #f1f3f5;
+  border-radius: 40px;
+  font-size: 14px; /* Giảm kích thước font */
+  color: #181717;
+  padding: 0 45px 0 20px; /* Điều chỉnh padding */
+}
+
+.input-box input::placeholder {
+  color: #181717;
+  font-size: 14px; /* Giảm kích thước font của placeholder */
+}
+
+.input-box i {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+}
+
+/*TP khác*/
+.wrap .remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0px 0 15px;
+}
+.remember-forgot label input {
+  accent-color: #fff;
+  margin-right: 3px;
+}
+.remember-forgot a {
+  color: #181717;
+  text-decoration: none;
+}
+.remember-forgot a:hover {
+  text-decoration: underline;
+}
+.wrap .buttonlogin {
+  width: 40%;
+  height: 45px;
+  background: #181717;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 20px;
+  color: white;
+  font-weight: 700;
+  padding: 7px 40px;
+}
+.submit {
+  text-align: center;
+}
+.loginwith {
+  text-align: center;
+  font-size: 20px;
+  color: #999;
+  margin: 20px auto;
+  position: relative;
+}
+.loginwith span {
+  padding: 0 9.6px;
+  background-color: #fff;
+  position: relative;
+  z-index: 1;
+}
+.loginwith:after {
+  content: "";
+  width: 100%;
+  height: 1px;
+  background-color: #999;
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+.wrap .register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.signup-social {
+  width: 100%; /* Độ rộng 100% để bằng với các ô input */
+  height: 50px; /* Chiều cao giống với input-box */
+  padding: 0 20px; /* Padding ngang giống input */
+  border-radius: 40px; /* Bo góc giống input */
+  background-color: white;
+  border: 2px solid #f1f3f5; /* Viền giống input */
+  display: flex;
+  align-items: center; /* Căn giữa theo chiều dọc */
+  gap: 10px; /* Khoảng cách giữa icon và text */
+  cursor: pointer;
+  box-shadow: none; /* Bỏ shadow */
+}
+
+.signup-social-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 3rem;
+}
+.signup-social-text {
+  flex-grow: 1; /* Cho phép text chiếm hết không gian còn lại */
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+.logo-wrapper {
+  background: #fff;
+}
+.logo-wrapper img {
+  width: 24px; /* Điều chỉnh kích thước logo */
+  height: 24px;
+}
+
+.gg {
+  width: 100%;
+  margin: 30px 0; /* Margin giống input-box */
+}
+
+.register p a {
+  color: #007aff;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+.register p a:hover {
+  text-decoration: underline;
+}
+.register-container {
+  width: 100%;
+  max-width: 500px; /* Giới hạn chiều rộng tối đa */
+  margin: 0 auto;
+  padding: 20px;
+}
+
+*::placeholder {
+  color: var(--font-color);
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.form-error,
+.df-pass {
+  color: red;
+  font-size: 14px; /* Giảm kích thước font */
+  font-weight: 400;
+  line-height: 1.2; /* Giảm line-height */
+  visibility: hidden;
+  position: absolute; /* Thêm vị trí tuyệt đối */
+  bottom: -20px; /* Đẩy xuống dưới ô input */
+  left: 20px; /* Canh lề trái */
+}
+
+.input-box:has(:invalid:not(:placeholder-shown)) .form-error {
+  visibility: visible;
+}
+
+.form-group:has(:invalid) .buttonlogin {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* CSS Password */
+#pass-error {
+  margin-left: 30px;
+  font-size: 1.8rem;
+  font-weight: 500;
+  display: none;
+  position: relative;
+}
+
+#pass-error p {
+  padding: 5px 10px;
+}
+
+/* Thỏa mãn điều kiện là màu xanh */
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -25px;
+  content: "✔";
+}
+
+/*  Sai thì là màu đỏ */
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -25px;
+  content: "✖";
+}
+
+.nhap_sai_mk {
+  margin-top: 20px;
+  color: red;
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 2.8rem;
+  text-align: center;
+  visibility: hidden;
+}
+
+.button-register {
+  width: 200px; /* Cố định chiều rộng */
+  height: 45px;
+  background: #181717;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 20px;
+  color: white;
+  font-weight: 700;
+  margin: 20px auto; /* Căn giữa nút */
+  display: block; /* Hiển thị dạng block để margin auto có tác dụng */
+}

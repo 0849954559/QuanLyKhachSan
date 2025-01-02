@@ -1,0 +1,75 @@
+{%extends 'layout/base.html'%}
+
+{%block title%} Đăng ký {%endblock%}
+{% block custom_css %}
+<link rel="stylesheet" href="/static/css/login.css">
+<link rel="stylesheet" href="/static/css/reset.css">
+
+
+{% endblock %}
+{%block content%}
+<body>
+<div class="main-register">
+    <div class="sign">
+        <div id="form-register" class="register-container">
+            <div class="wrap register">
+                <form class="form-group" action="/register" method="POST">
+                    <div>
+                        <div class="title">TẠO TÀI KHOẢN</div>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" id="name" name="name" placeholder="Nhập username" required minlength="6">
+                        <i class="bx bxs-user"></i>
+                        <p class="form-error">Nhập ít nhất 6 ký tự</p>
+                    </div>
+                    <div class="input-box">
+                        <input type="email" id="mail-signup" class="email-input" name="email"
+                               placeholder="Nhập địa chỉ email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                               required>
+                        <i class="bx bxs-user"></i>
+                        <p class="form-error">Vui lòng nhập đúng email</p>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" id="psw" name="password" placeholder="Nhập mật khẩu"
+                               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" minlength="8" required>
+                        <i class="bx bxs-lock-alt"></i>
+                    </div>
+                    <div id="pass-error">
+                        <p id="letter" class="invalid">Có chữ viết thường</p>
+                        <p id="capital" class="invalid">Có chữ viết hoa</p>
+                        <p id="number" class="invalid">Có số</p>
+                        <p id="length" class="invalid">Ít nhất 8 ký tự</p>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" id="df-psw" name="confirm_password" placeholder="Nhập lại mật khẩu"
+                               required>
+                        <i class="bx bxs-lock-alt"></i>
+                        <p class="df-pass">Vui lòng nhập giống với mật khẩu đã tạo trước đó</p>
+                    </div>
+                    <div class="submit">
+                        <button type="submit" class="button-register" id="dangky" name="dangky">
+                            Đăng&nbsp;ký&nbsp;ngay
+                        </button>
+                    </div>
+                </form>
+                <div class="registerwith">
+                    <span>Hoặc đăng kí với</span>
+                </div>
+                <div class="gg">
+                    <button class="signup-social logo-wrapper">
+                        <img src="/static/img/g-logo.png" alt="logo GG">
+                        <span class="signup-social-text">Đăng ký bằng Google</span>
+                    </button>
+                </div>
+                <div class="login">
+                    <p>
+                        Bạn đã có tài khoản? <a href="/login">Đăng nhập ngay</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+{%endblock%}

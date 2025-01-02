@@ -1,0 +1,32 @@
+<nav>
+      <div class="nav__logo">KHK</div>
+      <ul class="nav__links">
+        <a class="link" href="/">Home</a>
+        <!--                {% for c in categories%}-->
+        <!--                <li class="nav-item">-->
+        <!--                    <a class="nav-link" href="/?roomType_id={{c.id}}">{{c.name}}</a>-->
+        <!--                </li>-->
+        <!--                {%endfor%}-->
+
+        {%if current_user.is_authenticated%}
+        <li class="nav-item">
+            <a class="nav-link text-info" href="/login">
+<!--                <img src="{{current_user.avatar}}" width="25" class="fluid rounded">-->
+                Chào {{current_user.name}}!
+            </a>
+        </li>
+        <li class="link"><a href="#">Blog</a></li>
+        <li class="link"><a href="#">Contact Us</a></li>
+        <li class="link">
+            <a class="link" href="/logout"> Đăng xuất</a>
+        </li>
+        {%else%}
+        <li class="link">
+            <a class="link" href="/login"> Đăng nhập</a>
+        </li>
+        <li class="link">
+            <a class="link" href="/register"> Đăng ký</a>
+        </li>
+        {%endif%}
+    </ul>
+    </nav>

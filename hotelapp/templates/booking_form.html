@@ -1,0 +1,93 @@
+{% extends 'layout/base.html' %}
+
+{%block title%} Phiếu đặt phòng {%endblock%}
+
+{% block custom_css %}
+    <link rel="stylesheet" href="/static/css/booking.css">
+{% endblock %}
+
+{% block content %}
+<h2>Booking Form</h2>
+<form method="post" action="{{ url_for('submit_booking') }}">
+    <div class="form-group">
+        <label for="customer_name">Full Name</label>
+        <input type="text" id="customer_name" name="customer_name" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="room_name">Room</label>
+        <input type="text" id="room_name" name="room_name" class="form-control" value="{{ room.name }}" readonly>
+    </div>
+    <div class="form-group">
+        <label for="checkin">Check-in Date</label>
+        <input type="date" id="checkin" name="checkin" class="form-control" value="{{ checkin }}" required>
+    </div>
+    <div class="form-group">
+        <label for="checkout">Check-out Date</label>
+        <input type="date" id="checkout" name="checkout" class="form-control" value="{{ checkout }}" required>
+    </div>
+    <h3>Guest List</h3>
+    <div id="guest_list">
+        <div class="form-group">
+            <label for="guest_1_name">Guest 1 Name</label>
+            <input type="text" id="guest_1_name" name="guest_1_name" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="guest_1_type">Guest 1 Type</label>
+            <select id="guest_1_type" name="guest_1_type" class="form-control">
+                <option value="domestic">Domestic</option>
+                <option value="international">International</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="guest_1_id">Guest 1 ID</label>
+            <input type="text" id="guest_1_id" name="guest_1_id" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="guest_1_address">Guest 1 Address</label>
+            <input type="text" id="guest_1_address" name="guest_1_address" class="form-control" required>
+        </div>
+        <!-- Repeat the above block for Guest 2 and Guest 3 -->
+        <!-- Guest 2 -->
+        <div class="form-group">
+            <label for="guest_2_name">Guest 2 Name</label>
+            <input type="text" id="guest_2_name" name="guest_2_name" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="guest_2_type">Guest 2 Type</label>
+            <select id="guest_2_type" name="guest_2_type" class="form-control">
+                <option value="domestic">Domestic</option>
+                <option value="international">International</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="guest_2_id">Guest 2 ID</label>
+            <input type="text" id="guest_2_id" name="guest_2_id" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="guest_2_address">Guest 2 Address</label>
+            <input type="text" id="guest_2_address" name="guest_2_address" class="form-control" required>
+        </div>
+        <!-- Guest 3 -->
+        <div class="form-group">
+            <label for="guest_3_name">Guest 3 Name</label>
+            <input type="text" id="guest_3_name" name="guest_3_name" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="guest_3_type">Guest 3 Type</label>
+            <select id="guest_3_type" name="guest_3_type" class="form-control">
+                <option value="domestic">Domestic</option>
+                <option value="international">International</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="guest_3_id">Guest 3 ID</label>
+            <input type="text" id="guest_3_id" name="guest_3_id" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="guest_3_address">Guest 3 Address</label>
+            <input type="text" id="guest_3_address" name="guest_3_address" class="form-control" required>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit Booking</button>
+</form>
+{% endblock %}

@@ -1,0 +1,37 @@
+{%extends 'layout/base.html'%}
+
+
+{%block content%}
+<section class="section__container popular__container">
+    <h2 class="section__header">Available Rooms</h2>
+    {% if rooms %}
+    <div class="popular__grid">
+        {% for room in rooms %}
+        <div class="popular__card">
+            <img src="{{ room.image }}" alt="{{ room.name }}"/>
+            <div class="popular__content">
+                <div class="popular__card__header">
+                    <h4>{{ room.name }}</h4>
+                    <h4>${{ room.price }}</h4>
+                </div>
+                <p>Capacity: {{ room.capacity }} guests</p>
+                <p>Room Type: {{ room.roomType.name }}</p>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a href="{{ url_for('booking_form', room_id=room.id) }}" class="btn btn-primary">Book</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No available rooms found for the given criteria.</p>
+    {% endif %}
+</section>
+
+
+{% endblock %}

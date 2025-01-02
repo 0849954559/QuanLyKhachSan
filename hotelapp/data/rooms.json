@@ -1,0 +1,47 @@
+[{
+  "id": 101,
+  "name": "Room101",
+  "capacity": 1,
+  "price": "300000",
+  "image": "https://res.cloudinary.com/ddwglju4o/image/upload/v1734696775/0249b9de4d2ccca9616a3f9dc5c010e3_zgtkv2.jpg",
+  "roomType_id": 1
+},
+{
+  "id": 102,
+  "name": "Room102",
+  "capacity": 2,
+  "price": "175000",
+  "image": "https://res.cloudinary.com/ddwglju4o/image/upload/v1734696642/160579861_Royal_National_Room_Standard_Single_2640x1760_pahxvh.jpg",
+  "roomType_id": 1
+},
+{
+  "id": 201,
+  "name": "Room201",
+  "capacity": 2,
+  "price": "260000",
+  "image": "https://res.cloudinary.com/ddwglju4o/image/upload/v1734696729/deluxe-room-twin-bed_s16a0a.jpg",
+  "roomType_id": 2
+},
+{
+  "id": 202,
+  "name": "Room202",
+  "capacity": 3,
+  "price": "250000",
+  "image": "https://res.cloudinary.com/ddwglju4o/image/upload/v1734696699/2.jpg_yhaeel.jpg",
+  "roomType_id": 2
+},
+{
+  "id": 203,
+  "name": "Room203",
+  "capacity": 3,
+  "price": "220000",
+  "image": "https://res.cloudinary.com/ddwglju4o/image/upload/v1734696824/family-suite-3-2023_qpwcm3.jpg",
+  "roomType_id": 3
+}, {
+  "id": 301,
+  "name": "Room301",
+  "capacity": 2,
+  "price": "220000",
+  "image": "https://res.cloudinary.com/ddwglju4o/image/upload/v1735447302/london_deluxe-room-king_resized_mriwy4.jpg",
+  "roomType_id": 4
+}]

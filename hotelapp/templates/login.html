@@ -1,0 +1,37 @@
+{%extends 'layout/base.html'%}
+
+{%block title%} Đăng nhập {%endblock%}
+
+{% block custom_css %}
+    <link rel="stylesheet" href="/static/css/reset.css">
+    <link rel="stylesheet" href="/static/css/app.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+{% endblock %}
+
+{%block content%}
+
+<body>
+<div id="wrapper">
+    <form action="{{ url_for('login_my_user') }}" method="post" id="form-login">
+    <h1 class="form-heading">Đăng nhập</h1>
+    <div class="form-group">
+        <i class="far fa-user"></i>
+        <input type="text" name="username" class="form-input" placeholder="Tên đăng nhập">
+    </div>
+    <div class="form-group">
+        <i class="fas fa-key"></i>
+        <input type="password" name="password" class="form-input" placeholder="Mật khẩu">
+        <div id="eye">
+            <i class="far fa-eye"></i>
+        </div>
+    </div>
+    <input type="submit" value="Đăng nhập" class="form-submit">
+    {% if err_msg %}
+    <div class="alert alert-danger">{{ err_msg }}</div>
+    {% endif %}
+</form>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="js/app.js"></script>
+{%endblock%}

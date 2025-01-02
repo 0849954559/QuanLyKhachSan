@@ -1,0 +1,21 @@
+  [{
+    "id": 1,
+    "name": "Room"
+  },
+  {
+    "id": 2,
+    "name": "Guest"
+  },
+  {
+    "id": 3,
+    "name": "Facilities"
+  },
+  {
+    "id": 4,
+    "name": "Staff"
+  },
+  {
+   "id" : 5,
+    "name": "Admin"
+  }
+]

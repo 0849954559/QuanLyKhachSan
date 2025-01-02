@@ -1,0 +1,25 @@
+  [{
+    "id": 1,
+    "content": "Phụ thu khách nước ngoài",
+    "surcharge": "50000",
+    "rules_id": 2,
+    "room_id": 102,
+    "user_id": 2
+  },
+  {
+    "id": 2,
+    "content": "Phụ thu khách nội địa",
+    "surcharge": "30000",
+    "rules_id": 2,
+    "room_id": 102,
+    "user_id": 2
+  },
+  {
+    "id": 3,
+    "content": "Nhân viên đi trễ",
+    "surcharge": "50000",
+    "rules_id": 4,
+    "room_id": 102,
+    "user_id": 2
+  }
+]

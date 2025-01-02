@@ -1,0 +1,100 @@
+/* Định dạng chung cho toàn bộ form */
+form {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+    border: 1px solid #000;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+h2 {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 0;
+    text-align: left;
+}
+
+/* Table styling for guest list */
+#guest_list {
+    margin-top: 20px;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+/* Label và input căn hàng ngang */
+.form-group label {
+    flex: 0 0 25%;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #000;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+/* Định dạng bảng thông tin khách hàng */
+#guest_list .form-group {
+    flex-direction: row;
+}
+
+#guest_list table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+#guest_list th,
+#guest_list td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: center;
+    font-size: 14px;
+}
+
+#guest_list th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+#guest_list td {
+    height: 40px; /* Tăng chiều cao ô */
+}
+
+/* Giao diện nút */
+button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,197 @@
+{% extends 'admin/master.html' %}
+
+{% block body %}
+<h1 class="text-center text-success">THỐNG KÊ MẬT ĐỘ SỬ DỤNG PHÒNG</h1>
+
+<!-- Thống kê theo phòng -->
+<div class="row mt-4">
+    <div class="col-md-5 col-12">
+        <h3>Mật độ sử dụng theo phòng</h3>
+        <table class="table">
+            <tr>
+                <th>Phòng</th>
+                <th>Số lượt đặt</th>
+                <th>Số ngày sử dụng</th>
+                <th>Tỷ lệ sử dụng</th>
+            </tr>
+            {% for r in usage_stats %}
+            <tr>
+                <td>{{r.room_name}}</td>
+                <td>{{r.total_bookings}}</td>
+                <td>{{r.total_days_booked}}</td>
+                <td>{{r.occupancy_rate}}%</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="col-md-7 col-12">
+        <canvas id="roomUsageChart"></canvas>
+    </div>
+</div>
+
+<!-- Thống kê theo tháng -->
+<hr class="hr"/>
+<div class="row mt-4">
+    <div class="col-md-5 col-12">
+        <h3>Mật độ sử dụng theo tháng</h3>
+        <div class="mb-3">
+            <label>Chọn năm:</label>
+            <select id="yearSelect" class="form-control" onchange="updateStats(this.value)">
+                {% for year in years %}
+                <option value="{{year}}" {% if year == selected_year %}selected{% endif %}>{{year}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <table class="table">
+            <tr>
+                <th>Tháng</th>
+                <th>Số lượt đặt</th>
+                <th>Số ngày sử dụng</th>
+            </tr>
+            {% for p in usage_by_month %}
+            <tr>
+                <td>Tháng {{p[0]}}</td>
+                <td>{{p[1]}}</td>
+                <td>{{p[2]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="col-md-7 col-12">
+        <canvas id="monthlyUsageChart"></canvas>
+    </div>
+</div>
+
+<!-- Thống kê trạng thái phòng -->
+<hr class="hr"/>
+<div class="row mt-4">
+    <div class="col-md-5 col-12">
+        <h3>Thông tin mật độ sử dụng</h3>
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5>Phòng sử dụng nhiều nhất:</h5>
+                <p>{{most_used_room.room_name}} ({{most_used_room.occupancy_rate}}%)</p>
+                <h5>Phòng sử dụng ít nhất:</h5>
+                <p>{{least_used_room.room_name}} ({{least_used_room.occupancy_rate}}%)</p>
+            </div>
+        </div>
+        <table class="table">
+            <tr>
+                <th>Trạng thái</th>
+                <th>Số lượng phòng</th>
+            </tr>
+            {% for status in current_room_status %}
+            <tr>
+                <td>
+                    {% if status[0] == 1 %}
+                        Phòng trống
+                    {% elif status[0] == 2 %}
+                        Đang sử dụng
+                    {% elif status[0] == 3 %}
+                        Đã đặt trước
+                    {% endif %}
+                </td>
+                <td>{{status[1]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="col-md-7 col-12">
+        <canvas id="roomStatusChart"></canvas>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Dữ liệu cho biểu đồ mật độ sử dụng theo phòng
+    let roomLabels = [];
+    let roomData = [];
+    {% for r in usage_stats %}
+        roomLabels.push('{{r.room_name}}');
+        roomData.push({{r.occupancy_rate}});
+    {% endfor %}
+
+    // Dữ liệu cho biểu đồ sử dụng theo tháng
+    let monthlyLabels = [];
+    let monthlyData = [];
+    {% for p in usage_by_month %}
+        monthlyLabels.push('Tháng {{p[0]}}');
+        monthlyData.push({{p[2]}});
+    {% endfor %}
+
+    // Dữ liệu cho biểu đồ trạng thái phòng
+    let statusLabels = ['Phòng trống', 'Đang sử dụng', 'Đã đặt trước'];
+    let statusData = [];
+    {% for status in current_room_status %}
+        statusData.push({{status[1]}});
+    {% endfor %}
+
+    function drawChart(canvasId, labels, data, title) {
+        new Chart(document.getElementById(canvasId), {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: title,
+                    data: data,
+                    backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return value + (canvasId === 'roomUsageChart' ? '%' : ' ngày');
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // Biểu đồ tròn cho trạng thái phòng
+    new Chart(document.getElementById('roomStatusChart'), {
+        type: 'pie',
+        data: {
+            labels: statusLabels,
+            datasets: [{
+                data: statusData,
+                backgroundColor: [
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(255, 206, 86, 0.5)',
+                    'rgba(255, 99, 132, 0.5)'
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(255, 99, 132, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }
+    });
+
+    function updateStats(year) {
+        window.location.href = "/admin/report?year=" + year;
+    }
+
+    window.onload = function() {
+        drawChart('roomUsageChart', roomLabels, roomData, 'Tỷ lệ sử dụng phòng (%)');
+        drawChart('monthlyUsageChart', monthlyLabels, monthlyData, 'Số ngày sử dụng theo tháng');
+    }
+</script>
+{% endblock %}
